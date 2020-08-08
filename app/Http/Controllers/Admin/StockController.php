@@ -31,4 +31,16 @@ class StockController extends Controller
       // admin/stock/createにリダイレクトする
         return redirect('admin/stock/create');
     }
+    public function index(Request $request)
+  {
+      $cond_title = $request->cond_title;
+      if ($cond_title != '') {
+          // 検索されたら検索結果を取得する
+          $posts = Item::where('item', $cond_title)->get();
+      } else {
+          // それ以外はすべてのニュースを取得する
+          $posts = Item::all();
+      }
+      return view('admin.stock.index', ['posts' => $posts, 'cond_title' => $cond_title]);
+  }
 }
