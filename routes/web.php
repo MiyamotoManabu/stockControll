@@ -18,8 +18,12 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
     Route::get('stock/create', 'Admin\StockController@add');
     Route::post('stock/create', 'Admin\StockController@create');
     Route::get('stock', 'Admin\StockController@index');
+    Route::get('stock/edit', 'Admin\StockController@edit');
+    Route::post('stock/edit', 'Admin\StockController@update');
+    Route::get('stock/delete', 'Admin\StockController@delete');
 });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'StockController@index');

@@ -44,8 +44,19 @@
                                     <td>{{ \Str::limit($item->item, 100) }}</td>
                                     <td>{{ \Str::limit($item->quantity, 250) }}</td>
                                     <td>{{ \Str::limit($item->price, 250) }}</td>
+                                    <td>
+                                        <div>
+                                            <a href="{{ action('Admin\StockController@edit', ['id' => $item->id]) }}">編集</a>
+                                        </div>
+                                        <div>
+                                            <a href="{{ action('Admin\StockController@delete', ['id' => $item->id]) }}">削除</a>
+                                        </div>
+                                    </td>
                                 </tr>
                             @endforeach
+                            <div>
+                        　　　　<a href="{{ action('StockController@index') }}">トップページへ</a>
+                    　　　　</div>
                         </tbody>
                     </table>
                 </div>

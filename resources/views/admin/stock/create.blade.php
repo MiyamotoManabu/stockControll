@@ -41,6 +41,12 @@
                     </div>
                     {{ csrf_field() }}
                     <input type="submit" class="btn btn-primary" value="追加">
+                    <div>
+                        <a href="{{ action('Admin\StockController@index') }}">管理者一覧画面へ</a>
+                    </div>
+                    <div>
+                        <a href="{{ action('StockController@index') }}">トップページへ</a>
+                    </div>
                 </form>
             </div>
         </div>

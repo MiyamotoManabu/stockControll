@@ -14,4 +14,9 @@ class Item extends Model
         'quantity' => 'required',
         'price' => 'required',
     );
+    public function histories()
+    {
+      return $this->hasMany('App\History');
+
+    }
 }

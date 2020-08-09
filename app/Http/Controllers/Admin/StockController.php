@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use App\Item;
+use App\History;
+
+use Carbon\Carbon;
 
 class StockController extends Controller
 {
@@ -42,5 +45,44 @@ class StockController extends Controller
           $posts = Item::all();
       }
       return view('admin.stock.index', ['posts' => $posts, 'cond_title' => $cond_title]);
+  }
+  public function edit(Request $request)
+  {
+      // item Modelからデータを取得する
+      $item = Item::find($request->id);
+      if (empty($item)) {
+        abort(404);    
+      }
+      return view('admin.stock.edit', ['item_form' => $item]);
+  }
+
+
+  public function update(Request $request)
+  {
+      // Validationをかける
+      $this->validate($request, item::$rules);
+      // item Modelからデータを取得する
+      $item = item::find($request->id);
+      // 送信されてきたフォームデータを格納する
+      $item_form = $request->all();
+      unset($item_form['_token']);
+
+      // 該当するデータを上書きして保存する
+      $item->fill($item_form)->save();
+      $history = new History;
+      $history->item_id = $item->id;
+      $history->edited_at = Carbon::now();
+      $history->save();
+
+      return redirect('admin/stock');
+  }
+  
+  public function delete(Request $request)
+  {
+      // 該当するItem Modelを取得
+      $item = Item::find($request->id);
+      // 削除する
+      $item->delete();
+      return redirect('admin/stock');
   }
 }
