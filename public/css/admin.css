@@ -1,30 +1,30 @@
 body {
   background-repeat: no-repeat;
   background-position: center;
-  background-color: #000;
-  color: #fff;
+  background-color: #ddd;
+  color: #30273e;
 }
 
 .navbar-laravel {
-  background-color: #000;
+  background-color: #ddd;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
 .navbar-brand {
-  color: #fff !important;
+  color: #30273b !important;
 }
 
 .nav-link {
-  color: #fff !important;
+  color: #30273b !important;
 }
 
 .table-dark {
-  color: #fff;
+  color: #00a096;
 }
 
 .list-group-item {
-  border-color: #fff;
-  background-color: #000;
+  border-color: #42a3df;
+  background-color: #ddd;
 }
 
 .login-box {
@@ -32,10 +32,15 @@ body {
 }
 
 .login-header {
-  background-color: rgba(0, 0, 0, 0.25);
+  background-color: #ddd;
 }
 
 .login-body {
-  background-color: rgba(0, 0, 0, 0.25);
+  background-color: #ddd;
+}
+
+.editform {
+  padding-top: 24px;
+  padding-bottom: 24px;
 }
 
